@@ -1,6 +1,6 @@
 package ci.digitalacademy.monetab.services.impl;
 import ci.digitalacademy.monetab.models.Teacher;
-import ci.digitalacademy.monetab.repositories.TeacherRepository;
+import ci.digitalacademy.monetab.repository.TeacherRepository;
 import ci.digitalacademy.monetab.services.TeacherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

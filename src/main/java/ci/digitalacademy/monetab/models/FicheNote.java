@@ -3,6 +3,8 @@ package ci.digitalacademy.monetab.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,8 +18,14 @@ public class FicheNote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "person", nullable = false)
-    private String person;
+    @Column(name = "note", nullable = false)
+    private String note;
+
+    @Column(name = "teach", nullable = false)
+    private String teach ;
+
+
+
 
 
 }

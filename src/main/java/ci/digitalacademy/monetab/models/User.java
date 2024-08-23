@@ -8,7 +8,6 @@ import java.time.Instant;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
 @Table(name="user")
 public class User {
@@ -26,6 +25,16 @@ public class User {
     @Column(name = "creation_date",nullable = false)
     private Instant creationDate;
 
+    private Adresse adresse;
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", pseudo='" + pseudo + '\'' +
+                ", password='" + password + '\'' +
+                ", creationDate=" + creationDate +
+                ", adresse=" + adresse +
+                '}';
+    }
 }

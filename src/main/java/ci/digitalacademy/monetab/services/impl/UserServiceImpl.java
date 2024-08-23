@@ -1,7 +1,7 @@
 package ci.digitalacademy.monetab.services.impl;
 
 import ci.digitalacademy.monetab.models.User;
-import ci.digitalacademy.monetab.repositories.UserRepository;
+import ci.digitalacademy.monetab.repository.UserRepository;
 import ci.digitalacademy.monetab.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +51,8 @@ public class UserServiceImpl implements UserService {
     public void delecte(Long id) {
         userRepository.deleteById(id);
     }
+
+
 
 
     //private final logger log= loggerFactory.getLogger(UserServiceimpl.class);

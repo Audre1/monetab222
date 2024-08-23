@@ -3,6 +3,8 @@ package ci.digitalacademy.monetab.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,4 +19,7 @@ public class Teacher {
 
     @Column(name = "matiere", nullable = false)
     private String matiere;
+
+    @OneToMany
+    private Set<FicheNote> FicheNote;
 }

@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name="student")
+@Table(name="note")
 
 public class Note {
 
@@ -20,6 +20,9 @@ public class Note {
 
         @Column(name = "notel", nullable = false)
         private String notel;
+
+        @Column(name = "matiere", nullable = false)
+        private String matiere;
 
 
     }
