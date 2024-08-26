@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -22,14 +23,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Teacher update(Teacher teacher) {
-        Optional<Teacher> optionalTeacher = findOne(teacher.getId());
-        if(optionalTeacher.isPresent()){
-            Teacher teacherToUpdate = optionalTeacher.get();
-            teacherToUpdate.setMatiere(teacher.getMatiere());
-            return  save(teacherToUpdate);
-        }else {
-            throw new IllegalArgumentException();
-        }
+     return null;
     }
 
     @Override

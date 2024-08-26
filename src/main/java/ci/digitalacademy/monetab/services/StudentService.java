@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-@Service
+
 
 public interface StudentService {
 
@@ -16,7 +16,7 @@ public interface StudentService {
 
     Optional<Student> findOne(Long id);
 
-    List<Student> findAll();
+     List<Student> findAll();
 
     void delecte(Long id);
 

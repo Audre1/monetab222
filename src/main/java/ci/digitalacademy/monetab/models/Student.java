@@ -8,17 +8,16 @@ import java.time.Instant;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
-@Table(name="student")
-public class Student {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//@DiscriminatorValue(value ="student")
+public class Student extends Personne {
 
     @Column(name = "matricule",  nullable = false)
     private String matricule;
+
+    @Column(name = "classe",  nullable = false)
+    private String classe;
+
 
 
 }

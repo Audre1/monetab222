@@ -9,7 +9,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
 @Table(name = "ficheNote")
 public class FicheNote {
@@ -24,8 +23,19 @@ public class FicheNote {
     @Column(name = "teach", nullable = false)
     private String teach ;
 
-
-
-
-
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name="teacher-id")
+//    private Teacher teacher;
+//
+//    @Override
+//    public String toString() {
+//        return "FicheNote{" +
+//                "id=" + id +
+//                ", note='" + note + '\'' +
+//                ", teach='" + teach + '\'' +
+//                ", teacher=" + teacher +
+//                '}';
+//    }
 }
+
+

@@ -3,10 +3,14 @@ package ci.digitalacademy.monetab.services.impl;
 import ci.digitalacademy.monetab.models.Note;
 import ci.digitalacademy.monetab.models.Student;
 import ci.digitalacademy.monetab.services.NoteService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class NoteServiceImpl implements NoteService {
 
     @Override

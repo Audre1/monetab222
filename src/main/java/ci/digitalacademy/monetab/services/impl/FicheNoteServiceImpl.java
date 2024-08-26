@@ -5,16 +5,16 @@ import ci.digitalacademy.monetab.models.Student;
 import ci.digitalacademy.monetab.repository.FicheNoteRepository;
 import ci.digitalacademy.monetab.repository.TeacherRepository;
 import ci.digitalacademy.monetab.services.FicheNoteService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
+@Service
 public class FicheNoteServiceImpl implements FicheNoteService {
     private final FicheNoteRepository ficheNoteRepository;
-
-    public FicheNoteServiceImpl(FicheNoteRepository ficheNoteRepository) {
-        this.ficheNoteRepository = ficheNoteRepository;
-    }
 
     @Override
     public FicheNote save(FicheNote ficheNote) {

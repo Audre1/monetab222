@@ -25,7 +25,6 @@ public class User {
     @Column(name = "creation_date",nullable = false)
     private Instant creationDate;
 
-    private Adresse adresse;
 
     @Override
     public String toString() {
@@ -34,7 +33,6 @@ public class User {
                 ", pseudo='" + pseudo + '\'' +
                 ", password='" + password + '\'' +
                 ", creationDate=" + creationDate +
-                ", adresse=" + adresse +
                 '}';
     }
 }

@@ -24,7 +24,6 @@ public class Adresse {
     @Column(name = "street", nullable = false)
     private String street;
 
-    private User user;
 
     @Override
     public String toString() {
