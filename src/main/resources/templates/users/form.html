@@ -36,18 +36,18 @@
 <div class="main-content">
     <main>
         <div class="retour-container">
-            <a  th:href="@{/users/add}" class="retour">← Retour</a>
+            <a  th:href="@{/students}" class="retour">← Retour</a>
         </div>
         <h2>Ajouter un utilisateur</h2>
-        <form id="addStudentForm">
+        <form id="addStudentForm"  th:object="${user}" th:action="@{/users}"  method="Post">
             <div class="form-row">
-                <input type="text" id="pseudo" placeholder="Pseudo" required>
+                <input type="text" id="pseudo" placeholder="Pseudo" required  >
             </div>
             <div class="form-row">
                 <input type="password" id="mot de passe" placeholder="Mot de passe" required>
             </div>
             <div class="form-row">
-                <input type="password" id="confirmer mot de passe" placeholder="Confirmer mot de passe" required>
+                <input type="password" id="confirmer mot de passe" placeholder="Confirmer mot de passe" required >
             </div>
             <div class="form-row buttons">
                 <button type="button" class="btn-cancel">Annuler</button>

@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.time.Instant;
 import java.util.List;
 
 
@@ -23,6 +24,7 @@ public class MonetabApplication implements CommandLineRunner {
 	private StudentService studentService;
 	@Autowired
 	private UserService userService;
+
 
 
 	public static void main(String[] args) {
@@ -118,8 +120,8 @@ public class MonetabApplication implements CommandLineRunner {
 
 		Teacher teacher = new Teacher();
 		teacher.setVacant(true);
-		teacher.setSujetProchainReunion("reunion des eleves");
-		teacher.setProchainCours("lundi");
+//		teacher.setSujetProchainReunion("reunion des eleves");
+//		teacher.setProchainCours("lundi");
 		teacher.setAge("23");
 		teacher.setNom("Beugre");
 		teacher.setPrenom("willy");
@@ -129,7 +131,29 @@ public class MonetabApplication implements CommandLineRunner {
 		teacher.setTelephone("0987675645");
 		teacher.setGenre("G");
 
+
+		Teacher teacher1 = new Teacher();
+		teacher1.setVacant(true);
+//		teacher1.setSujetProchainReunion("");
+//		teacher1.setProchainCours("mardi");
+		teacher1.setAge("27");
+		teacher1.setNom("Soumahoro");
+		teacher1.setPrenom("bekanty");
+		teacher1.setMatiere("math");
+		teacher1.setEmail("som@gmail");
+		teacher1.setVille("bouake");
+		teacher1.setTelephone("098767");
+		teacher1.setGenre("G");
+
+		teacherService.save(teacher1);
+
 		teacherService.save(teacher);
+
+		User user = new User();
+		user.setPseudo("bmarieaudr");
+		user.setPassword("1236G");
+		user.setCreationDate(Instant.now());
+		userService.save(user);
 
 //
 //

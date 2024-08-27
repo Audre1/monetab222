@@ -56,31 +56,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td th:each="teachers:${teacher}"></td>
+
+                <tr th:each="teacher:${teachers}">
                     <td th:text="${teacher.getPrenom}"></td>
                     <td th:text="${teacher.getMatiere}"></td>
+                    <td th:text="${teacher.isVacant}"></td>
                     <td th:text="${teacher.getNom}"></td>
-                    <td th:texte="${teacher.getAge}"></td>
-                    <td th:texte="${teacher.getTelephone}"></td>
+                    <td th:text="${teacher.getAge}"></td>
+                    <td th:text="${teacher.getTelephone}"></td>
                     <td th:text="${teacher.getVille}"></td>
-                    <td th:text="${teacher.getProchainCours}"></td>
-                    <td th:text="${teacher.getSujetProchainReunion}">Touba</td>
                     <td>
-                        <button class="edit-btn"><a th:href="@{/teachers/form}">Modifier</a></button>
-                        <button class="delete-btn">Supprimer</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>ATTA</td>
-                    <td>Flora</td>
-                    <td>Fhysique</td>
-                    <td>OUI</td>
-                    <td>37</td>
-                    <td>0123456789</td>
-                    <td>Bouake</td>
-                    <td>
-                        <button class="edit-btn"><a th:href="@{/teachers/form}">Modifier</a></button>
+                    <!--<td th:text="${teacher.getProchainCours}"></td>
+                    <td th:text="${teacher.getSujetProchainReunion}"></td> -->
+                        <button class="edit-btn"><a th:href="@{/teachers/{id}(id=${teachers.id}}">Modifier</a></button>
                         <button class="delete-btn">Supprimer</button>
                     </td>
                 </tr>

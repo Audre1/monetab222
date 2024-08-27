@@ -29,7 +29,7 @@
     </ul>
     <div class="logout">
         <hr>
-        <img th:src="@{../css/icon/logout.png}" style="width: 30px;height: 30px" alt="">  <a th:href="@{/}">Déconnexion</a>
+        <img th:src="@{../css/icon/logout.png}" style="width: 30px;height: 30px" alt="">  <a th:href="@{/auth/login}">Déconnexion</a>
     </div>
 </div>
 
@@ -38,23 +38,33 @@
         <div class="retour-container">
             <a th:href="@{/teachers/add}" class="retour">← Retour</a>
         </div>
-        <h2>Ajouter un Professeur</h2>
-        <form id="addStudentForm">
+        <div class="pagetitre">
+            <!--<h2 th:text="${teacher.id==null}?'Ajouter professeur':'Modifier professeur" ></h2>-->
+
+        </div>
+
+        <form th:object="${teachers}" th:action="@{/teachers}"  method="Post">
+
+            <input th:field="*{id}" hidden type="text">
+
             <div class="form-row">
-                <input type="text" id="nom" placeholder="Nom" required>
-                <input type="text" id="prenom" placeholder="Prénom" required>
+                <input th:field="*{nom}" type="text" id="nom" placeholder="Nom" required>
+                <input  th:field="*{prenom}" type="text" id="prenom" placeholder="Prenom" required>
+
             </div>
             <div class="form-row">
                 <div>
                     <label >Vacant :</label>
                 </div>
                 <div class="radio-group">
-                    <label><input type="radio" name="vacant" value="oui"  required> oui</label>
-                    <label><input type="radio" name="vacant" value="non" required> non</label>
+                    <label><input th:field="*{vacant}" type="radio" name="vacant" value="true"  required> oui</label>
+                    <label><input th:field="*{vacant}" type="radio" name="vacant" value="false" required> non</label>
+
+
                 </div>
             </div>
             <div class="form-row">
-                    <select id="classe" required>
+                    <select id="classe" required th:field="*{matiere}" >
                         <option value="">Sélectionner une matiere</option>
                         <option value="Math">Math</option>
                         <option value="Physique">Physique</option>
@@ -64,12 +74,16 @@
                         <option value="Philosophie">Philosophie</option>
                         <option value="Français">Français</option>
                     </select>
-                <input type="date" id="dateNaissance" required>
+                <input th:field="*{genre}" type="text" id="genre" placeholder="genre" required>
             </div>
 
             <div class="form-row">
-                <input type="tel" id="telephone" placeholder="Téléphone">
-                <input type="text" id="ville" placeholder="Ville">
+                <input th:field="*{telephone}" type="tel" id="telephone" placeholder="Téléphone">
+                <input th:field="*{ville}" type="text" id="ville" placeholder="Ville">
+            </div>
+            <div class="form-row">
+                <input  th:field=*{email} type="text" id="email" placeholder="email">
+                <input  th:field=*{age} type="text" id="age" placeholder="age">
             </div>
             <div class="form-row buttons">
                 <button type="button" class="btn-cancel">Annuler</button>

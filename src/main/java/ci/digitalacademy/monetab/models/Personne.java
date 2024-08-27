@@ -19,7 +19,6 @@ public class Personne{
     @Column(name = "nom",  nullable = false)
     private String nom;
 
-
     @Column(name = "prenom",  nullable = false)
     private String prenom;
 

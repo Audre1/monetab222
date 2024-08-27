@@ -16,11 +16,11 @@ public class Teacher extends Personne {
     @Column(name = "matiere", nullable = false)
     private String matiere;
 
-    @Column(name = "prochainCours", nullable = false)
-    private String prochainCours;
-
-    @Column(name = "sujetProchainReunion", nullable = false)
-    private String sujetProchainReunion;
+//    @Column(name = "prochainCours", nullable = false)
+//    private String prochainCours;
+//
+//    @Column(name = "sujetProchainReunion", nullable = false)
+//    private String sujetProchainReunion;
 
     @Column(name = "vacant", nullable = false)
     private boolean vacant;

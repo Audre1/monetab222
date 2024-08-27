@@ -37,27 +37,27 @@
 <div class="main-content">
     <main>
         <div class="retour-container">
-            <a th:href="@{/students/add}">← Retour</a>
+            <a th:href="@{/students}">← Retour</a>
         </div>
 
         <h2>Ajouter un élève</h2>
-        <form id="addStudentForm">
+        <form id="addStudentForm" th:object="${student}" th:action="@{/students}"  method="Post">
             <div class="form-row">
-                <input type="text" id="nom" placeholder="Nom" required>
-                <input type="text" id="prenom" placeholder="Prénom" required>
+                <input type="text" id="nom" placeholder="Nom" required th:field="*{nom}">
+                <input type="text" id="prenom" placeholder="Prénom" required th:field="*{prenom}">
             </div>
             <div class="form-row">
                 <div class="radio-group">
-                    <label><input type="radio" name="genre" value="homme" required> Homme</label>
-                    <label><input type="radio" name="genre" value="femme" required> Femme</label>
+                    <label><input type="radio" name="genre" value="homme" required th:field="*{genre}"> Homme</label>
+                    <label><input type="radio" name="genre" value="femme" required th:field="*{genre}"> Femme</label>
                 </div>
             </div>
             <div class="form-row">
-                <input type="text" id="matricule" placeholder="Matricule" required>
-                <input type="date" id="dateNaissance" required>
+                <input type="text" id="matricule" placeholder="Matricule" required th:field="*{matricule}">
+                <input type="text" id="age" placeholder="age" required th:field="*{age}">
             </div>
             <div class="form-row">
-                <select id="classe" required>
+                <select id="classe" required th:field="*{classe}">
                     <option value="">Sélectionner une classe</option>
                     <option value="1ere">1ère</option>
                     <option value="2eme">2ème</option>
@@ -68,8 +68,10 @@
                 </select>
             </div>
             <div class="form-row">
-                <input type="tel" id="telephone" placeholder="Téléphone">
-                <input type="text" id="ville" placeholder="Ville">
+                <input type="tel" id="telephone" placeholder="Téléphone" th:field="*{telephone}">
+                <input type="text" id="ville" placeholder="Ville" th:field="*{ville}">
+                <input type="text" id="email" placeholder="email" th:field="*{email}">
+
             </div>
             <div class="form-row buttons">
                 <button type="button" class="btn-cancel">Annuler</button>

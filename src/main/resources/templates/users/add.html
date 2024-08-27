@@ -38,7 +38,7 @@
     <main>
         <header>
             <h1>Utilisateur  <span th:text="${users.size}"> </span> </h1>
-            <button class="add-student"><img th:src="@{css/icon/plus.png}" style="width: 10px;height: 10px" alt=""><a th:href="@{/users/form}">Nouveau utilisateur</a></button>
+            <button class="add-student"><img th:src="@{css/icon/plus.png}" style="width: 10px;height: 10px" alt=""><a th:href="@{/users/user}">Nouveau utilisateur</a></button>
         </header>
         <section class="table-section">
             <table>
@@ -46,26 +46,21 @@
                 <tr>
                     <th>Pseudo</th>
                     <th>Date de creation</th>
-                    <th>Actions</th>
+                    <th>Mot De passe </th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td th:each="${users.pseudo}">admin</td>
-                    <td >16/03/2024</td>
+                <tr th:each="user:${users}">
+                    <td th:text="${user.getPseudo}"></td>
+                    <td th:text="${user.getCreationDate}"></td>
+                    <td th:text="${user.getPassword}"></td>
                     <td>
                         <button class="edit-btn"><a th:href="@{/users/form}">Modifier</a></button>
                         <button class="delete-btn">Supprimer</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>user2</td>
-                    <td>13/03/2024</td>
-                    <td>
-                        <button class="edit-btn"><a th:href="@{/users/form}">Modifier</a></button>
-                        <button class="delete-btn">Supprimer</button>
-                    </td>
-                </tr>
+
                 </tbody>
             </table>
         </section>
