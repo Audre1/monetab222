@@ -2,7 +2,10 @@ package ci.digitalacademy.monetab.services.impl;
 
 import ci.digitalacademy.monetab.models.User;
 import ci.digitalacademy.monetab.repository.UserRepository;
+import ci.digitalacademy.monetab.services.DTO.UserDTO;
 import ci.digitalacademy.monetab.services.UserService;
+import ci.digitalacademy.monetab.services.mapper.AdresseMapper;
+import ci.digitalacademy.monetab.services.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,41 +23,42 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User save(User user) {
-        return userRepository.save(user);
+    public UserDTO save(UserDTO userDTO) {
+        log.debug("Request to save User: {}", userDTO);
+        User user = UserMapper.toEntity(userDTO);
+        user = userRepository.save(user);
+        return UserMapper.toDTO(user);
+
     }
 
     @Override
-    public User update(User user) {
-        Optional<User> optionalUser = findOne(user.getId());
-        if(optionalUser.isPresent()){
-            User userToUpdate = optionalUser.get();
-            userToUpdate.setPassword(user.getPassword());
-            userToUpdate.setPseudo(user.getPseudo());
-            return  save(userToUpdate);
-        }else {
-            throw new IllegalArgumentException();
-        }
+    public UserDTO update(UserDTO userDTO) {
+        return findOne(userDTO.getId()).map(existingUser -> {
+            existingUser.setPseudo(userDTO.getPseudo());
+            existingUser.setPassword(userDTO.getPassword());
+            return save(existingUser);
+        }).orElseThrow(() -> new IllegalArgumentException("User not found with id " + userDTO.getId()));
+
     }
 
     @Override
-    public Optional<User> findOne(Long id) {
-        return userRepository.findById(id);
+    public Optional<UserDTO> findOne(Long id) {
+        return userRepository.findById(id).map(user ->{
+            return UserMapper.toDTO(user);
+        } );
+
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<UserDTO> findAll() {
+        return userRepository.findAll().stream().map(user -> {
+            return UserMapper.toDTO(user);
+        }).toList();
+
     }
 
     @Override
     public void delecte(Long id) {
-        userRepository.deleteById(id);
+
     }
-
-
-
-
-    //private final logger log= loggerFactory.getLogger(UserServiceimpl.class);
-
 }

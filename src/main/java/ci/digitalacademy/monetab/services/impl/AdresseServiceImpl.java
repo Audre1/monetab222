@@ -1,9 +1,10 @@
 package ci.digitalacademy.monetab.services.impl;
 
 import ci.digitalacademy.monetab.models.Adresse;
-import ci.digitalacademy.monetab.models.FicheNote;
 import ci.digitalacademy.monetab.repository.AdresseRepository;
 import ci.digitalacademy.monetab.services.AdresseService;
+import ci.digitalacademy.monetab.services.DTO.AdresseDTO;
+import ci.digitalacademy.monetab.services.mapper.AdresseMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,32 +18,37 @@ public class AdresseServiceImpl implements AdresseService {
     private  final AdresseRepository adresseRepository;
 
     @Override
-    public Adresse save(Adresse adresse) {
-        return adresseRepository.save(adresse);
+    public AdresseDTO save(AdresseDTO adresseDTO) {
+         Adresse adresse = AdresseMapper.toEntity(adresseDTO);
+       adresse = adresseRepository.save(adresse);
+       return AdresseMapper.toDTO(adresse);
     }
 
     @Override
-    public Adresse update(Adresse adresse) {
-        Optional<Adresse> optionalAdresse = findOne(adresse.getId());
-        if(optionalAdresse.isPresent()){
-            Adresse adresseToUpdate = optionalAdresse.get();
-            adresseToUpdate.setContry(adresse.getContry());
-            adresseToUpdate.setCity(adresse.getCity());
-            adresseToUpdate.setStreet(adresse.getStreet());
-            return  save(adresseToUpdate);
-        }else {
-            throw new IllegalArgumentException();
-        }
+    public AdresseDTO update(AdresseDTO adresseDTO) {
+        return findOne(adresseDTO.getId()).map(existingAdress->{
+            existingAdress.setContry(adresseDTO.getContry());
+            existingAdress.setCity(adresseDTO.getCity());
+            existingAdress.setStreet(adresseDTO.getStreet());
+            return save(existingAdress);
+
+        }).orElseThrow(()->new IllegalArgumentException());
     }
 
     @Override
-    public Optional<Adresse> findOne(Long id) {
-        return adresseRepository.findById(id);
+    public Optional<AdresseDTO> findOne(Long id) {
+        return adresseRepository.findById(id).map(adresse -> {
+          return   AdresseMapper.toDTO(adresse);
+        });
     }
 
     @Override
-    public List<Adresse> findAll() {
-        return adresseRepository.findAll();
+    public List<AdresseDTO> findAll() {
+        return adresseRepository.findAll().stream().map(adresse -> {
+          return AdresseMapper.toDTO(adresse);
+
+
+        }).toList();
     }
 
     @Override

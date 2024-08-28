@@ -2,6 +2,7 @@ package ci.digitalacademy.monetab.controller;
 
 import ci.digitalacademy.monetab.models.Teacher;
 import ci.digitalacademy.monetab.models.User;
+import ci.digitalacademy.monetab.services.DTO.UserDTO;
 import ci.digitalacademy.monetab.services.UserService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class UserController {
 
     @GetMapping("/add")
     public String showUserPages(Model model){
-        List<User> users = userService.findAll();
+        List<UserDTO> users = userService.findAll();
         model.addAttribute("users", users);
 
         return "users/add";
@@ -36,7 +37,7 @@ public class UserController {
 
 
     @PostMapping
-    public String saveUsers( User user){
+    public String saveUsers( UserDTO user){
         log.debug("Request to save user :{}",user);
         userService.save(user);
         return "redirect:/users";
@@ -45,7 +46,7 @@ public class UserController {
     @GetMapping("/user")
     public  String showAdduserform (Model model){
         log.debug("Requeste to show lister user form");
-        model.addAttribute("users", new User());
+        model.addAttribute("users", new UserDTO());
         return "users/form";
     }
 

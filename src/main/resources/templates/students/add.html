@@ -66,7 +66,7 @@
                     <td th:text="${student.getVille}"></td>
                     <td>
                         <button class="edit-btn"><a th:href="@{/students/{id}(id=${student.id})}">Modifier</a></button>
-                        <button class="delete-btn">Supprimer</button>
+                        <button class="delete-btn"><a href="@{/students/delete{id}(id=${student.id})}"> Supprimer</a> </button>
                     </td>
                 </tr>
                 </tbody>
@@ -92,6 +92,7 @@
     </div>
 </div>
 
-<script src="../js/Modal.js"></script>
+<!-- Assurez-vous d'inclure Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

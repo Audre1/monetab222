@@ -2,6 +2,7 @@ package ci.digitalacademy.monetab.services;
 
 import ci.digitalacademy.monetab.models.Student;
 
+import ci.digitalacademy.monetab.services.DTO.StudentDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,14 +11,14 @@ import java.util.Optional;
 
 public interface StudentService {
 
-    Student save(Student student);
+    StudentDTO save(StudentDTO studentDTO);
 
-    Student update(Student student);
+    StudentDTO update(StudentDTO studentDTO);
 
-    Optional<Student> findOne(Long id);
+    Optional<StudentDTO> findOne(Long id);
 
-     List<Student> findAll();
+     List<StudentDTO> findAll();
 
-    void delecte(Long id);
+    void delete(Long id);
 
     }

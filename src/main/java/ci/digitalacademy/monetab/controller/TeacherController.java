@@ -3,6 +3,7 @@ package ci.digitalacademy.monetab.controller;
 
 import ci.digitalacademy.monetab.models.Student;
 import ci.digitalacademy.monetab.models.Teacher;
+import ci.digitalacademy.monetab.services.DTO.TeacherDTO;
 import ci.digitalacademy.monetab.services.TeacherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,14 +32,14 @@ public class TeacherController {
 
     @GetMapping
     public String showTeacher(Model model){
-        List<Teacher> teachers =teacherService.findAll();
+        List<TeacherDTO> teachers =teacherService.findAll();
         model.addAttribute("teachers", teachers);
         return "teachers/add";
     }
 
     @GetMapping("/add")
     public String showTeacherlist(Model model){
-        List<Teacher> teachers =teacherService.findAll();
+        List<TeacherDTO> teachers =teacherService.findAll();
         model.addAttribute("teachers", teachers);
         return "teachers/add";
     }
@@ -52,7 +53,7 @@ public class TeacherController {
 
 
        @PostMapping
-       public String saveTeachers( Teacher teacher){
+       public String saveTeachers( TeacherDTO teacher){
              log.debug("Request to save teacher :{}",teacher);
               teacherService.save(teacher);
               return "redirect:/teachers";
@@ -61,13 +62,13 @@ public class TeacherController {
 
       @GetMapping("/{id}")
       public String showUpdate(Model model, @PathVariable Long id){
-        log.debug("Request to show update teacher");
-         Optional<Teacher> teacher= teacherService.findOne(id);
+          log.debug("Request to show update teacher with ID: {}", id);
+         Optional<TeacherDTO> teacher= teacherService.findOne(id);
          if(teacher.isPresent()){
              model.addAttribute("teacher", teacher.get());
              return "teachers/form";
          }else {
-             return "redirect/teachers";
+             return "redirect:/teachers";
          }
 
      }

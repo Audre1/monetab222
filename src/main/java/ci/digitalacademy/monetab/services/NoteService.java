@@ -2,19 +2,20 @@ package ci.digitalacademy.monetab.services;
 
 import ci.digitalacademy.monetab.models.Note;
 import ci.digitalacademy.monetab.models.Student;
+import ci.digitalacademy.monetab.services.DTO.NoteDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface NoteService {
 
-    Note save(Note note);
+    NoteDTO save(NoteDTO noteDTO);
 
-    Note update(Note note);
+    NoteDTO update(NoteDTO noteDTO);
 
-    Optional<Note> findOne(Long id);
+    Optional<NoteDTO> findOne(Long id);
 
-    List<Note> findAll();
+    List<NoteDTO> findAll();
 
     void delecte(Long id);
 }

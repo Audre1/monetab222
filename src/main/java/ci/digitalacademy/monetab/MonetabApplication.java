@@ -5,6 +5,9 @@ import ci.digitalacademy.monetab.repository.PersonneRepository;
 import ci.digitalacademy.monetab.repository.StudentRepository;
 import ci.digitalacademy.monetab.repository.TeacherRepository;
 import ci.digitalacademy.monetab.services.*;
+import ci.digitalacademy.monetab.services.DTO.StudentDTO;
+import ci.digitalacademy.monetab.services.DTO.TeacherDTO;
+import ci.digitalacademy.monetab.services.DTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -80,7 +83,7 @@ public class MonetabApplication implements CommandLineRunner {
 
 //		ficheNoteService.save(ficheNote2);
 
-		Student student = new Student();
+		StudentDTO student = new StudentDTO();
 		student.setClasse("Terminal");
 		student.setMatricule("001");
 		student.setEmail("beugre@galil");
@@ -88,10 +91,9 @@ public class MonetabApplication implements CommandLineRunner {
 		student.setPrenom("audrey");
 		student.setVille("abidjan");
 		student.setTelephone("098765");
-		student.setGenre("F");
 		student.setAge("24");
 
-		Student student1 = new Student();
+		StudentDTO student1 = new StudentDTO();
 		student1.setClasse("Terminal");
 		student1.setMatricule("002");
 		student1.setEmail("manpou@hnsj");
@@ -99,10 +101,9 @@ public class MonetabApplication implements CommandLineRunner {
 		student1.setPrenom("audrey");
 		student1.setVille("abidjan");
 		student1.setTelephone("098765");
-		student1.setGenre("F");
 		student1.setAge("22");
 
-		Student student3 = new Student();
+		StudentDTO student3 = new StudentDTO();
 		student3.setClasse("premiere c");
 		student3.setMatricule("003");
 		student3.setEmail("COULIBALY@AICHA.com");
@@ -110,7 +111,6 @@ public class MonetabApplication implements CommandLineRunner {
 		student3.setPrenom("aicha");
 		student3.setVille("Abidjan");
 		student3.setTelephone("08765434");
-		student3.setGenre("F");
 		student3.setAge("24");
 
 		studentService.save(student);
@@ -118,7 +118,7 @@ public class MonetabApplication implements CommandLineRunner {
 		studentService.save(student3);
 
 
-		Teacher teacher = new Teacher();
+		TeacherDTO teacher = new TeacherDTO();
 		teacher.setVacant(true);
 //		teacher.setSujetProchainReunion("reunion des eleves");
 //		teacher.setProchainCours("lundi");
@@ -129,10 +129,10 @@ public class MonetabApplication implements CommandLineRunner {
 		teacher.setEmail("mwilly@gmail");
 		teacher.setVille("bouake");
 		teacher.setTelephone("0987675645");
-		teacher.setGenre("G");
 
 
-		Teacher teacher1 = new Teacher();
+
+		TeacherDTO teacher1 = new TeacherDTO();
 		teacher1.setVacant(true);
 //		teacher1.setSujetProchainReunion("");
 //		teacher1.setProchainCours("mardi");
@@ -143,13 +143,13 @@ public class MonetabApplication implements CommandLineRunner {
 		teacher1.setEmail("som@gmail");
 		teacher1.setVille("bouake");
 		teacher1.setTelephone("098767");
-		teacher1.setGenre("G");
+
 
 		teacherService.save(teacher1);
 
 		teacherService.save(teacher);
 
-		User user = new User();
+		UserDTO user = new UserDTO();
 		user.setPseudo("bmarieaudr");
 		user.setPassword("1236G");
 		user.setCreationDate(Instant.now());

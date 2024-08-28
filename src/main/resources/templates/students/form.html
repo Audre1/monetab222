@@ -41,7 +41,7 @@
         </div>
 
         <h2>Ajouter un élève</h2>
-        <form id="addStudentForm" th:object="${student}" th:action="@{/students}"  method="Post">
+        <form id="addStudentForm" th:object="${student}" th:action="@{/students}"  method="post">
             <div class="form-row">
                 <input type="text" id="nom" placeholder="Nom" required th:field="*{nom}">
                 <input type="text" id="prenom" placeholder="Prénom" required th:field="*{prenom}">
